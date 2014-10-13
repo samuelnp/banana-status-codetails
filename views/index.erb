@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/mustache.js"></script>
+
+  </head>
+
+  <body onload="initMoustache()">
+    <script id="template" type="x-tmpl-mustache">
+      <div class="status">
+        <img src="{{avatar}}" class="img-thumbnail icon"/>
+        <p>Enviado por {{user}} a las {{time}}</p>
+        <img src="{{icon}}" class="img-thumbnail avatar"/>
+      </div>
+    </script>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div id="content"></div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <button type="button" class="btn btn-default btn-sm"><img src="images/bananas1.png" class="msg-icon" data-icon="bananas1.png" /></button>
+              <button type="button" class="btn btn-default btn-sm"><img src="images/croissant1.png" class="msg-icon" data-icon="croissant1.png" /></button>
+              <button type="button" class="btn btn-default btn-sm"><img src="images/birthday2.png" class="msg-icon" data-icon="birthday2.png" /></button>
+              <button type="button" class="btn btn-default btn-sm"><img src="images/burger1.png" class="msg-icon" data-icon="burger1.png" /></button>
+              <button type="button" class="btn btn-default btn-sm"><img src="images/cocktail7.png" class="msg-icon" data-icon="cocktail7.png" /></button>
+              <button type="button" class="btn btn-default btn-sm"><img src="images/coffee67.png" class="msg-icon" data-icon="coffee67.png" /></button>
+              <button type="button" class="btn btn-default btn-sm"><img src="images/teacup1.png" class="msg-icon" data-icon="teacup1.png" /></button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <script>
+      var socket, host, wshost, image_path, template, app_user, avatar_path;
+      host = '<%= "http://#{request.env['SERVER_NAME']}:#{request.env['SERVER_PORT']}/" %>';
+      wshost = 'ws://<%="#{request.env['SERVER_NAME']}:3001" %>';
+      image_path = host + "images/";
+      app_user = '<%= session[:name].downcase %>';
+      avatar_path = '<%= session[:avatar] %>';
+    </script>
+
+    <script src="js/general.js"></script>
+  </body>
+</html>
